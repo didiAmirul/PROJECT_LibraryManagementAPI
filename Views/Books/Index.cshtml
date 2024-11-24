@@ -1,0 +1,51 @@
+﻿@model IEnumerable<LibraryManagementAPI.Models.Book>
+
+<style>
+    .custom-blue-btn {
+        display: inline-block;
+        padding: 10px 15px;
+        font-size: 16px;
+        color: white;
+        background-color: blue;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+    }
+
+        .custom-blue-btn:hover {
+            background-color: darkblue;
+        }
+</style>
+
+<h2>Books List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>BookID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.BookID</td>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Publisher</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@book.BookID" class="btn btn-warning text-dark">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@book.BookID" class="btn btn-danger">Delete</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="custom-blue-btn">Add New Book</a>
+<br />
+<br />
+<br />
